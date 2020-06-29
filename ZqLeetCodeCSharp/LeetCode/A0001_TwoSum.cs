@@ -14,7 +14,7 @@ namespace ZqLeetCodeCSharp.LeetCode
     public class A0001_Solution
     {
         //暴力破解
-        public int[] TwoSum(int[] nums, int target)
+        public int[] TwoSum_1(int[] nums, int target)
         {
             for (int i = 0; i < nums.Length - 1; i++)
             {
@@ -27,7 +27,30 @@ namespace ZqLeetCodeCSharp.LeetCode
                 }
             }
 
-            return new int[] { };
+            return new int[] { 0, 0 };
+        }
+
+        //哈希表
+        public int[] TwoSum_2(int[] nums, int target)
+        {
+            Dictionary<int, int> dic = new Dictionary<int, int>();
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int temp = target - nums[i];
+
+                if (dic.ContainsKey(temp) && dic[temp] != i)
+                {
+                    return new int[] { dic[temp], i };
+                }
+
+                if (!dic.ContainsKey(nums[i]))
+                {
+                    dic.Add(nums[i], i);
+                }
+            }
+
+            return new int[] { 0, 0 };
         }
     }
     // @lc code=end
