@@ -33,23 +33,27 @@ namespace ZqLeetCodeCSharp.LeetCode
         //哈希表
         public int[] TwoSum_2(int[] nums, int target)
         {
+            //字典（哈希表）
             Dictionary<int, int> dic = new Dictionary<int, int>();
 
             for (int i = 0; i < nums.Length; i++)
             {
                 int temp = target - nums[i];
 
-                if (dic.ContainsKey(temp) && dic[temp] != i)
+                //if (dic.ContainsKey(temp) && dic[temp] != i) 
+                if (dic.ContainsKey(temp))
                 {
                     return new int[] { dic[temp], i };
                 }
 
+                //将当前值加入字典中
                 if (!dic.ContainsKey(nums[i]))
                 {
                     dic.Add(nums[i], i);
                 }
             }
 
+            //没有找到
             return new int[] { 0, 0 };
         }
     }
